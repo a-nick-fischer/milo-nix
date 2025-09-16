@@ -18,13 +18,10 @@
         globalConfig = ''
             {
                 auto_https off
-                local_certs
             }
         '';
         virtualHosts = {
             "home.nifi.blog".extraConfig = ''
-                tls internal
-                
                 handle /cal* {
                     reverse_proxy localhost:5232
                 }
