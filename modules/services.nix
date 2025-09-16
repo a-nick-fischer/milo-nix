@@ -10,7 +10,10 @@
 
     services.radicale = {
         enable = true;
-        settings.server.hosts = [ "0.0.0.0:5232" ];
+        settings = {
+            auth.type = "none"; # Temporary, we switch to LDAP later
+            server.hosts = [ "0.0.0.0:5232" ];
+        };
     };
 
     services.immich = {
