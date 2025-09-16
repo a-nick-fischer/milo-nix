@@ -15,6 +15,12 @@
 
     services.caddy = {
         enable = true;
+        globalConfig = ''
+            {
+                auto_https off
+                local_certs
+            }
+        '';
         virtualHosts = {
             "home.nifi.blog".extraConfig = ''
                 tls internal
