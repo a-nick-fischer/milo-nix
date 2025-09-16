@@ -3,8 +3,8 @@
         enable = true;
         ports = [ 22 ];
         settings = {
-            AllowUsers = [ "nick" ];
-            PermitRootLogin = "no";
+            # We actually need root login for remote deployments
+            AllowUsers = [ "nick" "root" ];
         };
     };
 
@@ -18,6 +18,4 @@
         port = 2283;
         accelerationDevices = null;
     };
-
-    users.users.immich.extraGroups = [ "video" "render" ];
 }
