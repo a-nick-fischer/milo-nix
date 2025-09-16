@@ -12,4 +12,12 @@
         enable = true;
         settings.server.hosts = [ "0.0.0.0:5232" ];
     };
+
+    services.immich = {
+        enable = true;
+        port = 2283;
+        accelerationDevices = null;
+    };
+
+    users.users.immich.extraGroups = [ "video" "render" ];
 }
