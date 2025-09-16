@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  radicale:
+    image: xlrl/docker-radicale:latest
+    container_name: radicale
+    restart: unless-stopped
+    volumes:
+      - ./config.ini:/var/radicale/config.ini:ro
+      - radicale_data:/data
+    networks:
+      - servicenet
+
+volumes:
+  radicale_data:
+    external: false
+
+networks:
+  servicenet:
+    external: true

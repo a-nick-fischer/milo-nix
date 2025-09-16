@@ -1,0 +1,13 @@
+http://192.168.0.206 {
+	handle /cal* {
+		reverse_proxy localhost:5232
+	}
+
+	handle /photos* {
+		reverse_proxy localhost:2283
+	}
+
+	handle {
+		respond "Welcome to home.nifi.blog" 200
+	}
+}
