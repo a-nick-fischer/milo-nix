@@ -19,7 +19,7 @@
   let 
     inherit (self) outputs;
   in {
-    nixosConfigurations.ix = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.milo = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs outputs; };
       modules = [
         inputs.disko.nixosModules.default
