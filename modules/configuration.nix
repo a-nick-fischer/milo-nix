@@ -2,9 +2,10 @@
 
 {
   imports = [
+    ./boot.nix
     ./time.nix
     ./nixos.nix
-    ./boot.nix
+    ./services.nix
     ./zfs.nix
   ];
 
