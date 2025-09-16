@@ -1,4 +1,9 @@
 { ... }: {
+    networking.firewall = {
+        enable = true;
+        allowedTCPPorts = [ 22 5232 2283 ];
+    };
+
     services.openssh = {
         enable = true;
         ports = [ 22 ];
