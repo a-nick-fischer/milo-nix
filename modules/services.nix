@@ -31,30 +31,11 @@
                 handle /photos* {
                     reverse_proxy localhost:2283
                 }
-
-                handle /files* {
-                    reverse_proxy unix//run/seafile/server.sock
-                }
                 
                 handle {
                     respond "Welcome to home.nifi.blog" 200
                 }
             '';
-        };
-    };
-
-     services.seafile = {
-        enable = true;
-
-        adminEmail = "me@nifi.blog";
-        initialAdminPassword = "changeme";
-
-        ccnetSettings.General.SERVICE_URL = "http://192.168.0.206/files";
-
-        seafileSettings = {
-            fileserver = {
-                host = "unix:/run/seafile/server.sock";
-            };
         };
     };
 
