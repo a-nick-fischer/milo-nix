@@ -6,21 +6,11 @@ services:
     container_name: radicale
     restart: unless-stopped
     init: true
-    read_only: true
     ports:
-      - "127.0.0.1:5232:5232"
+      - "5232:5232"
     volumes:
       - ./config.ini:/var/radicale/config.ini:ro
       - radicale_data:/data
-    security_opt:
-      - "no-new-privileges:true"
-    cap_drop:
-      - ALL
-    cap_add:
-      - CHOWN
-      - SETUID
-      - SETGID
-      - KILL
     deploy:
       resources:
         limits:
