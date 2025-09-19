@@ -3,10 +3,6 @@ http://192.168.0.206 {
 		reverse_proxy radicale:5232
 	}
 
-	handle /manage* {
-		reverse_proxy yacht:8000
-	}
-
 	handle {
 		respond "Welcome to home.nifi.blog" 200
 	}
