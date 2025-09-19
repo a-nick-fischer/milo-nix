@@ -6,7 +6,7 @@ services:
     container_name: yacht
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "0.0.0.0:8000:8000"
     volumes:
       - yacht_data:/config
       - /run/user/1000/podman/podman.sock:/var/run/docker.sock:rw

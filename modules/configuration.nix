@@ -23,7 +23,10 @@
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
   # Firewall
-  networking.firewall.enable = true;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 80 443 8000 ];
+  };
 
   # SSH
   services.openssh = {
