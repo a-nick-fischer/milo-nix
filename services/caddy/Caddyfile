@@ -3,8 +3,8 @@ http://192.168.0.206 {
 		reverse_proxy radicale:5232
 	}
 
-	handle /photos* {
-		reverse_proxy immich_server:2283
+	handle /manage* {
+		reverse_proxy yacht:8000
 	}
 
 	handle {
