@@ -67,7 +67,10 @@
   environment.systemPackages = with pkgs; [ podman-compose ];
 
   # Networking
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+    "net.ipv4.ip_unprivileged_port_start" = 80;
+  };
 
   networking = {
     hostName = "milo"; # Define your hostname.
