@@ -2,12 +2,35 @@ version: '3.8'
 
 services:
   radicale:
-    image: xlrl/docker-radicale:latest
+    image: tomsquest/docker-radicale:latest
     container_name: radicale
     restart: unless-stopped
+    init: true
+    read_only: true
+    ports:
+      - "127.0.0.1:5232:5232"
     volumes:
       - ./config.ini:/var/radicale/config.ini:ro
       - radicale_data:/data
+    security_opt:
+      - "no-new-privileges:true"
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETUID
+      - SETGID
+      - KILL
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          pids: 50
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:5232"]
+      interval: 30s
+      retries: 3
+      start_period: 10s
     networks:
       - servicenet
 
