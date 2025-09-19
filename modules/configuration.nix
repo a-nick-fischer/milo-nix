@@ -5,7 +5,6 @@
     ./boot.nix
     ./time.nix
     ./nixos.nix
-    ./services.nix
     ./zfs.nix
   ];
 
