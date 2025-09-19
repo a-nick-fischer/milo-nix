@@ -3,6 +3,37 @@ http://192.168.0.206 {
 		reverse_proxy radicale:5232
 	}
 
+	handle /services* {
+		uri strip_prefix /services
+		reverse_proxy yacht:8000
+	}
+
+	# Seafile WebSocket handling for SeaDoc
+	@ws {
+		header Connection *Upgrade*
+		header Upgrade websocket
+	}
+	handle @ws {
+		reverse_proxy seafile:80
+	}
+
+	# SeaDoc socket.io handling
+	handle /socket.io/* {
+		rewrite * /socket.io{uri}
+		reverse_proxy seadoc:80
+	}
+
+	# SeaDoc server handling
+	handle /sdoc-server/* {
+		reverse_proxy seadoc:80
+	}
+
+	# Main Seafile application
+	handle /seafile* {
+		uri strip_prefix /seafile
+		reverse_proxy seafile:80
+	}
+
 	handle {
 		respond "Welcome to home.nifi.blog" 200
 	}
