@@ -9,7 +9,7 @@ services:
       - "8000:8000"
     volumes:
       - yacht_data:/config
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /run/user/1000/podman/podman.sock:/var/run/docker.sock:rw
     environment:
       - PUID=1000
       - PGID=1000
